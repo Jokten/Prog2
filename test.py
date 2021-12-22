@@ -4,8 +4,8 @@ import unittest
 from collections.abc import Iterable
 
 # Import exactly one implementation of Dictionary:
-from linked_list_dict import Dictionary
-#from search_tree_dict import Dictionary
+#from linked_list_dict import Dictionary
+from search_tree_dict import Dictionary
 
 # Test the expected Dictionary API using Python"s built-in unittest system
 class DictionaryTest(unittest.TestCase):
