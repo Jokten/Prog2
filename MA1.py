@@ -1,9 +1,9 @@
 """
 Solutions to module 1
-Student: 
-Mail:
-Reviewed by:
-Reviewed date:
+Student: Jonathan Berntsson
+Mail: jonathan.berntsson.9094@student.uu.se
+Reviewed by: Johan Andersson Östling
+Reviewed date: 01-04-2022
 """
 
 import math
@@ -133,7 +133,7 @@ if __name__ == "__main__":
   
   Exercise 16: Time for bricklek with 50 bricks:
   
-  2**50 - 1 = 1125899906842623 seconds = 35 702 051 years
+  2**50 - 1 = 1 125 899 906 842 623 seconds = 35 702 051 years
   
   
   
@@ -141,7 +141,7 @@ if __name__ == "__main__":
   Exercise 17: Time for Fibonacci:
   a) Code in main
   b) 0.26986026763916016*1.618**20 = 4080 seconds
-  0.26986026763916016*1.618**70 = 114718948085697 seconds
+  0.26986026763916016*1.618**70 = 114 718 948 085 697 seconds
 
   
   
@@ -150,17 +150,19 @@ if __name__ == "__main__":
   Exercise 20: Comparison sorting methods:
   For 10^6:
   1000 times larger input --> 1000^2 = 1 000 000 sec = 11.6 days for insertion
-                          --> 1000*log1000 = 3*1000 = 3000 seconds = 50 minutes for mergesort
+                        1 = 1000*log1000*c -> c = 1/3000
+                          --> c*10^6*log10^6 = 2000 seconds
 For 10^9:
   10^6 times larger input --> (10^6)^2 = 10^12 sec > 31 000 years for insertion
-                          --> 10^6*log10^6 = 6*10^6 = 6 000 000 seconds = 69 days for mergesort
+                          --> c*10^9*log10^9 = c*9*10^9 = 3 000 000 seconds = 64 days for mergesort
   
   
   
   
   Exercise 21: Comparison Theta(n) and Theta(n log n)
   
-  
+  c*10*log10 = 1 -> c = 0.1
+  n=n*log(n)*c -> c*log(n) = 1 -> log(n) = 10 -> n = 10 000 000 000
   
   
   
