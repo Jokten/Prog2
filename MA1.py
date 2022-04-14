@@ -106,7 +106,7 @@ def bricklek(f, t, h, n): # Compulsory
     if n == 1:
         return [f'{f}->{t}']
     else:
-        return bricklek(f, h, t, n-1) + [f'{f}->{t}'] + bricklek(h, t, f, n-1)
+        return bricklek(f, h, t, n-1) + bricklek(f, t, h, 1) + bricklek(h, t, f, n-1)
 
 def main():
     """ Demonstates my implementations """

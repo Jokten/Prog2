@@ -1,0 +1,8 @@
+# Put test lines in this file!
+# Examples:
+1+2           # Should be 3
+3*4           # Should be 12
+1 + 2*(3+2)   # Should be 11
+2=x
+2*x+4
+(sin(2)=x)*x + (cos(2)=y)*y
