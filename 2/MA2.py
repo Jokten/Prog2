@@ -1,10 +1,10 @@
 """
 Solutions to module 2 - A calculator
-Student: 
-Mail:
-Reviewed by:
-Reviewed date:
-"""
+Student: Jonathan Berntsson
+Mail: Jokten123@gmail.com
+Reviewed by: Simon
+Reviewed date: 25/4 -22
+""" 
 
 """
 Note:
@@ -19,19 +19,11 @@ import math
 from tokenize import TokenError  
 from MA2tokenizer import TokenizeWrapper
 
-
-class SyntaxError(Exception):
-    def __init__(self, arg):
-        self.arg = arg
-        super().__init__(self.arg)
-
-class EvaluationError(Exception):
-    def __init__(self, arg):
-        self.arg = arg
-        super().__init__(self.arg)
-
-
 def fib(n):
+    if not n.is_integer() or n <= 0:
+        raise EvaluationError(f"fib only takes positive intergers and got ({n})")
+    else:
+        n = int(n)
     if n == 0:
         return 0
     elif n <= 2:
@@ -43,6 +35,23 @@ def fib(n):
         old = new
         new = updated
     return new
+
+def mean(x):
+    return sum(x)/len(x)
+
+function_1 = {'sin':math.sin, 'cos': math.cos, 'exp':math.exp, 'log':math.log, 'fib':fib, 'fac':math.factorial}
+function_n = {'max': max, 'min':min, 'sum':sum, 'mean':mean}
+class SyntaxError(Exception):
+    def __init__(self, arg):
+        self.arg = arg
+        super().__init__(self.arg)
+
+class EvaluationError(Exception):
+    def __init__(self, arg):
+        self.arg = arg
+        super().__init__(self.arg)
+
+
 
 def statement(wtok, variables):
     """ See syntax chart for statement"""
@@ -81,7 +90,6 @@ def expression(wtok, variables):
         if b:
             result = result + term(wtok, variables)
         else:
-
             result = result - term(wtok, variables)
     return result
 
@@ -132,9 +140,8 @@ def factor(wtok, variables):
         result = float(wtok.get_current())
         wtok.next()
     
-
-    elif wtok.get_current() in ['sin', 'cos', 'exp', 'log', 'fib', 'fac']:
-        cur = wtok.get_current()
+    elif wtok.get_current() in function_1.keys():
+        func = wtok.get_current()
         wtok.next()
         if wtok.get_current() == '(':
             wtok.next()  # bypass (
@@ -143,42 +150,19 @@ def factor(wtok, variables):
         else:
             raise SyntaxError(
                 f"Expected a parentheses but got'{wtok.get_current()}'")
-        if cur == 'sin':
-            result = math.sin(x)
-        elif cur == 'cos':
-            result = math.cos(x)
-        elif cur == 'exp':
-            result = math.exp(x)
-        elif cur == 'log':
-            if x <= 0:
-                raise EvaluationError(f"log can't take negative input numbers")
-            result = math.log(x)
-        elif cur == 'fib':
-            if x.is_integer() and x >= 0:
-                result = fib(int(x))
-            else:
-                raise EvaluationError(
-                f"fib only takes positive intergers and got {cur}({x})")
-        elif cur == 'fac':
-            if x.is_integer() and x >= 0:
-                result = math.factorial(int(x))
-            else:
-                raise EvaluationError(
-                f"f only takes positive intergers and got {cur}({x})")
-                
+        if func == 'log' and x <= 0:
+            raise EvaluationError(f"log can't take negative input numbers")
+        if func == 'fac' and (x <= 0 or not x.is_integer()):
+            raise EvaluationError(
+                 f"fac only takes positive intergers and got {x}")
+        else:
+            return function_1[func](x)                
 
-    elif wtok.get_current() in ['max', 'min', 'sum', 'mean']:
+    elif wtok.get_current() in function_n.keys():
         cur = wtok.get_current()
         wtok.next()
         args = arglist(wtok, variables)
-        if cur == 'max':
-            result = max(args)
-        elif cur == 'mean':
-            result = sum(args)/len(args)
-        elif cur == 'min':
-            result = min(args)
-        elif cur == 'sum':
-            result = sum(args)
+        return function_n[cur](args)
     
     elif wtok.is_name():
         if wtok.get_current() in variables.keys():
