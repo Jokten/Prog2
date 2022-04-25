@@ -189,7 +189,7 @@ def factor(wtok, variables):
 
     else:
         raise SyntaxError(
-            "Expected number or '('")  
+            "Expected expression or function")  
     
     return result
 
@@ -228,6 +228,9 @@ def main():
         if wtok.get_current() == 'quit':
             print('Bye')
             exit()
+        elif wtok.get_current() == 'vars':
+            for i in variables.items():
+                print(f'{i[0]: <16}:{i[1]}')
         else:
             try:
                 result = statement(wtok, variables)
