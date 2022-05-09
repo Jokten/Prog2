@@ -1,8 +1,5 @@
 import random
-import matplotlib.pyplot as plt
-import concurrent.futures as future
-
-
+import matplotlib
 in_circle = 0
 redx = []
 redy = []

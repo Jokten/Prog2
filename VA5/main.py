@@ -1,8 +1,8 @@
 import tkinter as tk
 from random import randint
 
-HEIGHT = 1000
-WIDTH = 1000
+HEIGHT = 500
+WIDTH = 500
 window = tk.Tk()
 canvas = tk.Canvas(window, height=HEIGHT, width=WIDTH)
 canvas.pack()
