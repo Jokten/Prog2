@@ -2,17 +2,7 @@ import tkinter as tk
 from random import randint
 from random import choice
 
-<<<<<<< HEAD
 global speed
-=======
-HEIGHT = 500
-WIDTH = 500
-window = tk.Tk()
-canvas = tk.Canvas(window, height=HEIGHT, width=WIDTH)
-canvas.pack()
-radii = 30
-all_balls = []
->>>>>>> 6938449fa0b5d4fc3f8ac31cc94961ec15d037cb
 class Ball:
     def __init__(self,balls):
         interx = WIDTH/2-radii
