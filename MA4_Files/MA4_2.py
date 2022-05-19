@@ -25,6 +25,7 @@ def main():
 	plt.plot(x,py,label='py')
 	plt.plot(x,num,label='numba')
 	plt.plot(x,c,label='c')
+	plt.legend()	
 	plt.savefig('time.png')
 	print(fib2_py(41))
 	ff = Person(41)
