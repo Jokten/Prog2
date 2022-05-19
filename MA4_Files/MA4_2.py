@@ -25,7 +25,6 @@ def main():
 	plt.plot(x,num,label='numba')
 	plt.plasma(x,c,label='c')
 	plt.savefig('time.png')
-	plt.show()
 	print(fib2_py(47))
 	ff = Person(47)
 	print(ff.fib())
