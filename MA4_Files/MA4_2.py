@@ -8,7 +8,7 @@ def main():
 	py = []
 	num = []
 	c = []
-	for i in range(30, 46):
+	for i in range(30, 35):
 		start = pc()
 		fib_py(i)
 		end = pc()
@@ -20,13 +20,14 @@ def main():
 		py.append(end-start)
 		num.append(end2-end)
 		c.append(end3-end2)
-	x = list(range(30,46))
+		print(i)
+	x = list(range(30,35))
 	plt.plot(x,py,label='py')
 	plt.plot(x,num,label='numba')
-	plt.plasma(x,c,label='c')
+	plt.plot(x,c,label='c')
 	plt.savefig('time.png')
-	print(fib2_py(47))
-	ff = Person(47)
+	print(fib2_py(41))
+	ff = Person(41)
 	print(ff.fib())
 	
 def fib_py(n):
