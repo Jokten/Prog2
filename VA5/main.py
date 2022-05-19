@@ -79,10 +79,16 @@ def create_balls(event):
         all_balls.append(Ball(all_balls))
 
 def remove_all(event):
-    #canvas.delete('all')
-    for i in all_balls:
-        canvas.delete(i.ball)
-        all_balls.remove(i)
+    canvas.delete('all')
+    h.clear()
+    h.append(Hole(0,0,all_balls))
+    h.append(Hole(0,HEIGHT,all_balls))
+    h.append(Hole(WIDTH,HEIGHT,all_balls))
+    h.append(Hole(WIDTH,0,all_balls))
+    all_balls.clear()
+    #for i in all_balls:
+    #    canvas.delete(i.ball)
+    #    all_balls.remove(i)
 
 def update_all(b,h):
     for i in b:
@@ -96,7 +102,7 @@ WIDTH = 1000
 window = tk.Tk()
 canvas = tk.Canvas(window, height=HEIGHT, width=WIDTH, bg='green')
 canvas.pack(side='left')
-frame = tk.Frame(window, bg='brown')
+frame = tk.Frame(window)
 frame.pack(side='right')
 radii = 30
 all_balls = []
@@ -135,4 +141,3 @@ while True:
     canvas.after(speed,update_all(all_balls, h))
     window.update()
     window.update_idletasks()
-window.mainloop()
